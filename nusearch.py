@@ -24,7 +24,7 @@ def with_nonunitary2(n):
     a = (n - 2) / n  # you can try poly(n) or n-1 too.
     b = 1
     M = np.array([[-a, +b], 
-                  [+b, -a]])
+                  [+1, -1]])
     # M = np.array([[-1, 1], [1, -1]])
 
     U = np.kron(M, I)
