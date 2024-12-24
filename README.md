@@ -1,4 +1,4 @@
-# Quantum search with a non-onunitary gate
+# Quantum search with a non-unitary gate
 The simulation code for the paper, An alternative non-unitary implementation for the quantum search algorithm, A. Daskin, 2024
 http://dx.doi.org/10.13140/RG.2.2.25468.24960 
 
