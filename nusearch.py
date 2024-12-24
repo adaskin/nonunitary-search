@@ -21,7 +21,7 @@ def with_nonunitary2(n):
 
     psi[imark] = -psi[imark]
 
-    a = (n - 2) / n  # you can try poly(n) or n-1 too.
+    a = (n - 2) / n  # you can try poly(n) e.g n**2 too.
     b = 1
     M = np.array([[-a, +b], 
                   [+1, -1]])
