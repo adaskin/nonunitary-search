@@ -21,7 +21,7 @@ def with_nonunitary2(n):
 
     psi[imark] = -psi[imark]
 
-    a = (n - 2) / n  # you can try poly(n) too.
+    a = (n - 1) / n  # you can try poly(n) too.
     b = 1
     M = np.array([[-a, +b], 
                   [+b, -a]])
@@ -29,7 +29,7 @@ def with_nonunitary2(n):
 
     U = np.kron(M, I)
     psi2 = U @ psi
-
+    # we look at imark-N because it is in the upper part..
     print("elements p> 1/2N:\n", np.argwhere(np.abs(psi2[:]) > 1 / (2 * N)))
     print("norm of out state:", np.linalg.norm(psi2))
     print("px, pmax: ", psi2[imark - N] ** 2, np.max(psi2) ** 2)
