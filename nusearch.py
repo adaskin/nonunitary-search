@@ -21,7 +21,7 @@ def with_nonunitary2(n):
 
     psi[imark] = -psi[imark]
 
-    a = (n - 1) / n  # you can try poly(n) too.
+    a = (n - 2) / n  # you can try poly(n) or n-1 too.
     b = 1
     M = np.array([[-a, +b], 
                   [+b, -a]])
@@ -73,4 +73,4 @@ if __name__ == "__main__":
     plt.legend()
 
     plt.show()
-    plt.savefig("foo.png", bbox_inches="tight")
+    #plt.savefig("foo.png", bbox_inches="tight")
