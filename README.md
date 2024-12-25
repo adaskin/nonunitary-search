@@ -7,6 +7,7 @@ The code basically applies the left most matrix as an approximation of the right
 \left( \begin{matrix}-\frac{n-2}{n}&1\\1&-1\end{matrix} \right) \approx\left( \begin{matrix}-\frac{poly(n)-2}{poly(n)}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-\frac{N-2}{N}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-1&1\\1&-1\end{matrix} \right)
 ```
    - you can use $n-1$ or any other value too. You can also parameterize this...
+   - Note that this is kind of related to the precision of the machine.
 
 This is applied to the first qubit.
 - This constructs the vector similar to the final state of the Grover search algorithm. 
