@@ -5,7 +5,7 @@ latest version on researchgate: http://dx.doi.org/10.13140/RG.2.2.25468.24960
 ## nonunitary basic simulation
 The code basically applies the left most matrix as an approximation of the right most matrix:
 ```math
-\left( \begin{matrix}-\frac{n-2}{n}&1\\ \frac{n-2}{n} &-1\end{matrix} \right) \approx\left( \begin{matrix}-\frac{poly(n)-2}{poly(n)}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-\frac{N-2}{N}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-1&1\\1&-1\end{matrix} \right)
+\left( \begin{matrix}-\frac{n-2}{n}&1\\ 1 &-\frac{n-2}{n}\end{matrix} \right) \approx\left( \begin{matrix}-\frac{poly(n)-2}{poly(n)}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-\frac{N-2}{N}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-1&1\\1&-1\end{matrix} \right)
 ```
    - you can use $n-1$ or any other value too. You can also parameterize this...
    - Note that this is kind of related to the precision of the machine.
