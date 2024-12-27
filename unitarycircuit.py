@@ -1,3 +1,11 @@
+"""
+it gives the unitary circuit simulation of C given in the paper,
+and can be used to generate figures 
+with amplitude amplification used in the paper.
+You can change the value of a and the number of iterations and qubits
+in the main function at the bottom.
+ammar daskin, Decempber 2024.
+"""
 import numpy as np
 import random
 import scipy
@@ -78,14 +86,14 @@ def matrixSquareRoot(nqubits, a):
     return S, Uht, Uh
 
 
-def unitaryC(n, k=1):
+def unitaryC(n, k=1, a=0.8):
     ntotal = n + k + 1
     N = 2**n
     K = 2**k
 
     # smaller a makes ket0 higher,
     # but marked smaller
-    a = 0.8
+    # a = 0.8
 
     # circuit
     # initial Hadamards on n+1 qubits and marked
@@ -160,10 +168,9 @@ def statsforstate(n, psi, imark):
     return probs0[0], pmarked_total
 
 
-def oblivious(psi, n1, n2, state):
-    """for a given two registers of n1 and n2 qubits
-    and a state index for the first register,
-    it amplifies the prob of state in the first register
+def oblivious(psi, n1, n2, iter=1):
+    """for a given two registers of n1 and n2 qubits,
+    it amplifies the prob-0 of state in the first register
     """
     N1 = 2**n1
     N2 = 2**n2
@@ -171,16 +178,21 @@ def oblivious(psi, n1, n2, state):
     I2 = np.eye(N2)
     I = np.eye(N1 * N2)
 
+    # first register ket{0}
     s = np.eye(N1, 1)
-    Us = 2 * s @ s.transpose() - I1
+    # marking gate for the first register
+    Us = I1 - 2 * s @ s.transpose()
+    # global unitary
     U1 = np.kron(Us, I2)
 
-    U2 = I - 2 * psi @ psi.transpose()
+    U2 = 2 * psi @ psi.transpose() - I
 
     # apply AA
-    temp = U1 @ psi
-
-    psi2 = U2 @ temp
+    temp1 = psi.copy()
+    for i in range(iter):
+        temp2 = U1 @ temp1
+        psi2 = U2 @ temp2
+        temp1 = psi2
 
     return psi2
 
@@ -188,13 +200,14 @@ def oblivious(psi, n1, n2, state):
 if __name__ == "__main__":
     n = 11
     N = 2**n
-
+    # a = 0.75
     runs = np.zeros((n, 8))
     for i in range(1, n + 1):
-        psi_beforeaa, imark = unitaryC(i)
+        a = (i - 1) / (i)
+        psi_beforeaa, imark = unitaryC(i, 1, a=a)
         beforeaa = statsforstate(i, psi_beforeaa, imark)
 
-        psi_afteraa = oblivious(psi_beforeaa, 1, i + 1, 0)
+        psi_afteraa = oblivious(psi_beforeaa, 1, i + 1, iter=i)
         afteraa = statsforstate(i, psi_afteraa, imark)
         runs[i - 1][0] = i
         runs[i - 1][1] = 2**i
@@ -220,5 +233,6 @@ if __name__ == "__main__":
     plt.ylabel("Magnitude")
     plt.legend()
     # axs[1].set_xticks(RE.keys())
+    # figname = "a-{}.png".format(a)
+    # plt.savefig(figname)
     plt.show()
-    plt.savefig("withoutaa.png")
