@@ -2,7 +2,7 @@
 The simulation code for the paper, An alternative non-unitary implementation for the quantum search algorithm, A. Daskin, 2024
 https://arxiv.org/abs/2412.16514
 latest version on researchgate: http://dx.doi.org/10.13140/RG.2.2.25468.24960
-## nonunitary basic simulation
+## nonunitary basic idea
 The code basically applies the left most matrix as an approximation of the right most matrix:
 ```math
 \left( \begin{matrix}-\frac{n-2}{n}&1\\ 1 &-\frac{n-2}{n}\end{matrix} \right) \approx\left( \begin{matrix}-\frac{poly(n)-2}{poly(n)}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-\frac{N-2}{N}&1\\1&-1\end{matrix} \right) \approx \left( \begin{matrix}-1&1\\1&-1\end{matrix} \right)
