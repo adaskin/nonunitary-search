@@ -14,3 +14,7 @@ This is applied to the first qubit.
 - And when this state is collapsed on to the first part by a measurement on the first qubit, the remaining state (the collapsed)  is automatically normalized. 
 
     - This normalized state is similar to the result of the Gram-Schmidt orthogonalization process applied to the the initial superposition and the marked vector.
+
+## Unitary implementation
+- Unitary implementation of this circuit is done through the square root of the paper. This is shown in the paper.
+- unitarycircuit.py simulates this circuit with or without AA. 
