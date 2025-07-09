@@ -168,7 +168,7 @@ def statsforstate(n, psi, imark):
     return probs0[0], pmarked_total
 
 
-def oblivious(psi, n1, n2, iter=1):
+def aa(psi, n1, n2, iter=1):
     """for a given two registers of n1 and n2 qubits,
     it amplifies the prob-0 of state in the first register
     """
@@ -207,7 +207,7 @@ if __name__ == "__main__":
         psi_beforeaa, imark = unitaryC(i, 1, a=a)
         beforeaa = statsforstate(i, psi_beforeaa, imark)
 
-        psi_afteraa = oblivious(psi_beforeaa, 1, i + 1, iter=i)
+        psi_afteraa = aa(psi_beforeaa, 1, i + 1, iter=i)
         afteraa = statsforstate(i, psi_afteraa, imark)
         runs[i - 1][0] = i
         runs[i - 1][1] = 2**i
