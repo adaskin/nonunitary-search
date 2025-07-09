@@ -16,4 +16,10 @@ This is applied to the first qubit.
 
 ## unitarycircuit.py: Main unitary circuit implementation
 - Unitary implementation of this circuit is done through the square root of the matrix. This is shown in the paper.
-- unitarycircuit.py simulates this circuit with or without AA. The number of repetitions are set to n: you can adjust this and the parameter a.
+- [`unitarycircuit.py`](unitarycircuit.py) simulates this circuit with or without AA. The number of repetitions are set to n: you can adjust this and the parameter a.
+- [`unitary_with_pennylane.py`](unitary_with_pennylane.py) implements with pennylane
+
+you can simply run the simulation by using
+```python
+python unitary_with_pennylane.py
+```
